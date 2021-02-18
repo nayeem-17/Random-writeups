@@ -25,7 +25,7 @@ You can see this output
 
 # Docker image and container 
 
-Docker image and docker container is not the same. What we pull or push from DOckerHub is image. Image can exist without any container. But when you run any docker image with/without some configuration, it becomes a docker container. Container contains docker image and some configuration.
+Docker image and docker container are not the same. What we pull or push from DockerHub is image. Image can exist without any container. But when you run any docker image with/without some configuration, it becomes a docker container. You can create multiple docker containers with the same docker image with different configurations. Those containers will share the docker image. When you delete a container, it will delete just the configuration, not the docker image. If you want to delete a docker image you have to delete that docker image separately.
 
 You can see the docker images stored on your machine by running this command.
 ```bash
@@ -59,7 +59,13 @@ Here, dokcerimage is the name of the docker image.If docker can not find this im
 ```bash
 sudo docker pull dockerimage
 ```
-This command will download the docker image from DOckerHub for you. 
+This command will download the docker image from DockerHub for you. 
+
+Now, to delete a docker container , run this command
+```bash
+sudo docker container rm CONTAINER_NAME #either this command
+sudo docker container rm CONTAINER_ID # or this command
+```
 # Useful links
 
 * [The Docker Handbook](https://docker.farhan.info/) & [project links](https://github.com/fhsinchy/docker-handbook-projects) for this book.
