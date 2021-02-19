@@ -1,19 +1,19 @@
 # What is Docker
 
-Docker lets you package and run any application in an isolated environment called a container. So, you make a Docker image of your dev enviourment , push the image on [DockerHub](https://hub.docker.com/). Then, on the production enviourment , you just pull the dockerfile from DockerHub and run the file. You can deploy your application from dev enviourmnet to production enviourment this easily.
+Docker lets you package and run any application in an isolated environment called a container. So, you make a Docker image of your dev environment, push the image on [DockerHub](https://hub.docker.com/). Then, on the production environment, you just pull the dockerfile from DockerHub and run the file. You can deploy your application from the dev environment to the production environment this easily.
 
 # Installing Docker engine on your machine
 
 ## Installing on your Linux machine
 
-First update your apt package index
+First, update your apt package index
 ```bash
 sudo apt-get update
 ```
-The install the latest version of Docker engine     
+Then, install the latest version of Docker engine     
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt-get install docker.io -y
 ```
 Now, check if everything's working fine 
 ```bash
@@ -25,7 +25,7 @@ You can see this output
 
 # Docker image and container 
 
-Docker image and docker container are not the same. What we pull or push from DockerHub is image. Image can exist without any container. But when you run any docker image with/without some configuration, it becomes a docker container. You can create multiple docker containers with the same docker image with different configurations. Those containers will share the docker image. When you delete a container, it will delete just the configuration, not the docker image. If you want to delete a docker image you have to delete that docker image separately.
+Docker image and docker container are not the same. What we pull or push from DockerHub is an image. An image can exist without any container. But when you run any docker image with/without some configuration, it becomes a docker container. You can create multiple docker containers with the same docker image with different configurations. Those containers will share the docker image. When you delete a container, it will delete just the configuration, not the docker image. If you want to delete a docker image you have to delete that docker image separately.
 
 You can see the docker images stored on your machine by running this command.
 ```bash
@@ -55,7 +55,7 @@ You can run your container in a detached mood using `--detach` tag or `-d` tag
 sudo docker run --detach dockerimage #either this command
 sudo docker run -d dockerimage #or this command
 ```
-Here, dokcerimage is the name of the docker image.If docker can not find this image on your local machine, it will pull the docker image from DockerHub. You can also pull an image from DockerHub.
+Here, dokcerimage is the name of the docker image. If docker can not find this image on your local machine, it will pull the docker image from DockerHub. You can also pull an image from DockerHub.
 ```bash
 sudo docker pull dockerimage
 ```
