@@ -50,7 +50,7 @@ sudo docker ps -a
 ```
 Now, you can see that the name of the last container is **my-docker**
 
-You can run your container in a detached mood using `--detach` tag or `-d` tag
+You can run your container in a detached mode using `--detach` tag or `-d` tag
 ```bash
 sudo docker run --detach DOCKER_IMAGE_NAME #either this command
 sudo docker run -d DOCKER_IMAGE_NAME #or this command
@@ -78,7 +78,7 @@ You can not delete a docker image if there's a container of that image. To delet
 sudo docker rmi IMAGE_NAME #either this command
 sudo docker image rm IMAGE_NAME #or this command
 ```
-You can delte all stopped container by running one command
+You can delete all stopped container by running one command
 ```bash
 sudo docker container prune
 ```
@@ -104,11 +104,11 @@ Containers are isolated environments. Your host machine does not know what is go
 # or
 -p HOST_PORT:CONTAINER_PORT
 ```
-For example, if you want to create a container from mongodb image, you have to publish a port in order to access mongo from host machine. The default port of mongodb container is 27017. If you want to access mongo at port 3000 from your machine.
+For example, if you want to create a container from mongodb image, you have to publish a port in order to access mongodb from host machine. The default port of mongodb container is 27017. If you want to access mongo at port 3000 from your machine.
 ```bash
 sudo docker run -p 3000:27017 --name mongo_container mongo
 ```
-Now, you can access mongodb at port 3000 & the name of the container is **mongo_container**
+Here,the name of the container is **mongo_container** . Now, you can access mongodb at port 3000 from your machine.
 
 # Useful links
 * [Docker Docs](https://docs.docker.com/)
