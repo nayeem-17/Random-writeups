@@ -109,7 +109,23 @@ For example, if you want to create a container from mongodb image, you have to p
 sudo docker run -p 3000:27017 --name mongo_container mongo
 ```
 Now, you can access mongodb at port 3000 & the name of the container is **mongo_container**
+## Volume Binding
+Here's a scenario, you've started a database container. You stored some data. Now you restarted the container, you can not find any data because the database is empty. Because a docker container does not have its own storage. You can solve this problem by binding volume to your docker container. You can mount a file or directory of your host machine into a container. The path of the file or directory does not need to exist on your host machine already. To bind volume to your docker container, you have to use `-v` / `--volume` tag.
+```bash
+-v PATH_IN_HOST:PATH_IN_CONTAINER
+# or
+--volume PATH_IN_HOST:PATH_IN_CONTAINER
+```
+Here, both paths are absolute paths. So, after binding a directory of your host machine to a directory of a container, whatever you stored in that directory of the container, will be stored in that directory of your host machine. So, you'll find your data after restarting your container.
+Here's a example of publishing ports,binding volume together
+```bash
+sudo docker run -p 3000:27017 -v ~/mongo/data:/data/db --name mongo_container mongo
 
+```
+Here, `~/mongo/data` of host machine is linked in `/data/db` directory in **mongo_container**
+## Creating Network
+## Building Docker Image
+# Why Docker-compose
 # Useful links
 * [Docker Docs](https://docs.docker.com/)
 * [The Docker Handbook](https://docker.farhan.info/) & [project links](https://github.com/fhsinchy/docker-handbook-projects) for this book.
