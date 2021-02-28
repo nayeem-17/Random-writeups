@@ -123,8 +123,66 @@ sudo docker run -p 3000:27017 -v ~/mongo/data:/data/db --name mongo_container mo
 
 ```
 Here, `~/mongo/data` of host machine is linked in `/data/db` directory in **mongo_container**
+
 ## Creating Network
-## Building Docker Image
+When you are using multiple docker containers and they need to connect to each other, here comes the problem. Because we know that docker containers are isolated environments. Normally a docker container does not allow any connection from outside. To establish a connection between multiple docker containers, you have a create a docker network and connect each container so that they can talk to each other.     
+To create a docker network
+```bash
+sudo docker network create NETWORK_NAME
+```
+To connect with a network while creating a container, use `--network` flag
+```
+sudo docker run --network NETWORK_NAME IMAGE_NAME
+```
+To connect a container with a docker network,
+```bash
+sudo docker network connect NETWORK_NAME CONTAINER_NAME
+# or
+sudo docker network connect NETWORK_NAME CONTAINER_ID
+```
+To detach a container from a network
+```bash
+sudo docker network disconnect NETWORK_NAME CONTAINER_NAME
+sudo docker network disconnect NETWORK_NAME CONTAINER_ID
+```
+To remove a docker network
+```bash
+sudo docker network rm NETWORK_NAME
+```
+# Building Docker Image
+Now, we know how to play with a docker images we get from the docker hub. Now we'll see how we can build a docker image from our development environment.  
+
+To build a docker image, first, we have to create a docker config file, `Dockerfile` . Here, you have to write your docker configuration. There are several rules for writing a `Dockerfile`   
+* The first line of your `DOckerfile` should be this
+    ```Dockerfile
+    FROM BASE_IMAGE
+    ```
+    You have to extend any docker image.
+* You can create a directory where you want to copy your project
+    ```Dockerfile
+    WORKDIR YOUR_WORKING_DIRECTORY
+    ```
+* You can copy files from your local machine to a container 
+    ```DOckerfile
+    COPY FROM_LOCAL TO_CONTAINER
+    ```     
+* You can run any command in your container
+    ```Dockerfile
+    RUN COMMAND
+    ```
+*   You can tell docker which command to execute last 
+    ```DOckerfile
+    CMD [COMMAND]
+    ```        
+    Here, you have to write the `COMMAND` separated in `,` not in space. To see more about how to write a valid `Dockerfile`. See [this](https://docs.docker.com/engine/reference/builder/)
+* Others, such as `network`, `volume` etc. same as explained before.    
+Here's a demo [Dockerfile](Dockerfile) 
+Now, to build a docker image
+```bash
+sudo docker build . # if you are in the same directory where Dockerfile exists.
+#or
+sudo docker build DOCKERFILE_LOCATION 
+```
 # Why Docker-compose
 # Useful links
 * [Docker Docs](https://docs.docker.com/)
