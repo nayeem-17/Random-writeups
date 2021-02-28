@@ -194,7 +194,7 @@ This will create a docker network, and create containers according to the `docke
 ```bash
 sudo docker-compose down
 ```
-This will remove all the containers and the common docker network. Here's a demo [Docker-compose](Docker-compose.yml) file. 
+This will remove all the containers and the common docker network. Here's a demo [Docker-compose](docker-compose.yml) file. 
 To know more about docker-compose, see [this](https://docs.docker.com/compose/).
 # Useful links
 * [Docker Docs](https://docs.docker.com/)
