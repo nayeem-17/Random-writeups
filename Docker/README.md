@@ -184,6 +184,18 @@ sudo docker build . # if you are in the same directory where Dockerfile exists.
 sudo docker build DOCKERFILE_LOCATION 
 ```
 # Why Docker-compose
+You can easily understand why you should use docker-compose by this example.    
+You need to setup a node-express server with mongo database. If you wanna use docker, first, you have to create two separate docker conatiner for node-express and mongodb. Then you have to create a network then attach the containers with this network. You have to publish ports for each containers. Uggh! Tons of work.  
+To make your life easier, here comes docker-compose. You will write a `Dockerfile` to build your own docker image. Now you'll write a `docker-compose.yml` config file. Then just run this
+```bash
+sudo docker-compose up
+```
+This will create a docker network, and create containers according to the `docker-compose.yml` file and connect the containers with this network. You can stop your containers by running this
+```bash
+sudo docker-compose down
+```
+This will remove all the containers and the common docker network. Here's a demo [Docker-compose](Docker-compose.yml) file. 
+To know more about docker-compose, see [this](https://docs.docker.com/compose/).
 # Useful links
 * [Docker Docs](https://docs.docker.com/)
 * [The Docker Handbook](https://docker.farhan.info/) & [project links](https://github.com/fhsinchy/docker-handbook-projects) for this book.
