@@ -95,7 +95,7 @@ Now run the following command:
 terraform plan
 ```
 This command will show you the resources that will be created. 
-If you run this command for [this](basics/main.tf) example, you will see a long output starting like this
+If you run this command for [this](basics/main.tf) example, you will see a long output starting like this   
 ![begin](assets/begin.png)    
 Last line of the output  
 ![end](assets/end.png)      
