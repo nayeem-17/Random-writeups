@@ -96,15 +96,15 @@ terraform plan
 ```
 This command will show you the resources that will be created. 
 If you run this command for [this](basics/main.tf) example, you will see a long output starting like this
-![begin](assets/begin.png)
-Last line of the output 
-![end](assets/end.png)
+![begin](assets/begin.png)    
+Last line of the output  
+![end](assets/end.png)      
  Now, to apply the changes, run the following command:
  ``` terraform
 terraform apply
  ```
  This will create an ec2-instance. The output will be like this:
- ![apply](assets/apply-res.png)
+ ![apply](assets/apply-res.png) 
 
 Now you can see the ec2-instance in the AWS console.
 
@@ -113,7 +113,7 @@ Now you can see the ec2-instance in the AWS console.
 terraform destroy
 ```
 You'll see the changes and this output:
-![destroy](assets/destroy.png)
+![destroy](assets/destroy.png)      
 In your AWS console, you can see that your instance status is terminated.
 ## Useful links
 
