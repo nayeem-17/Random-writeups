@@ -118,4 +118,4 @@ In your AWS console, you can see that your instance status is terminated.
 ## Useful links
 
 ### [Terraform docs](https://www.terraform.io/docs/index.html)   
-### [AWS terraform docs](https://registry.terraform.io/providers/hashicorp/aws/latest/doc)  
+### [AWS terraform docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)  
