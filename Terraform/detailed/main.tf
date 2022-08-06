@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-2"
-}
-
 # create a vpc
 resource "aws_vpc" "dev-vpc" {
   cidr_block = "10.0.0.0/16"
@@ -26,7 +22,6 @@ resource "aws_internet_gateway" "dev-igw" {
 }
 
 # create a route table
-
 resource "aws_route_table" "route_table" {
   vpc_id = aws_vpc.dev-vpc.id
   route {
@@ -36,7 +31,6 @@ resource "aws_route_table" "route_table" {
 }
 
 # associate subnet with route table 
-
 resource "aws_route_table_association" "rta" {
   subnet_id      = aws_subnet.subnet-1.id
   route_table_id = aws_route_table.route_table.id
@@ -81,10 +75,6 @@ resource "aws_security_group" "dev-sg" {
 
 # create an EC2 instance
 resource "aws_instance" "main_server" {
-  tags = {
-    "Name" = "Main Server"
-  }
-
   ami                         = "ami-00399ec92321828f5"
   instance_type               = "t2.micro"
   availability_zone           = "us-east-2a"
@@ -92,18 +82,8 @@ resource "aws_instance" "main_server" {
   subnet_id                   = aws_subnet.subnet-1.id
   vpc_security_group_ids      = [aws_security_group.dev-sg.id]
   associate_public_ip_address = true
-  # provisioner "file" {
-  #   source      = "setup.sh"
-  #   destination = "./setup.sh"
-  # }
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "chmod +x setup.sh",
-  #     "./setup.sh"
-  #   ]
-  # }
-  # provisioner "local-exec" {
-  #   command = "echo ${self}"
-  # }
-  user_data = file("setup.sh")
+  user_data                   = file("setup.sh")
+  tags = {
+    "Name" = "Main Server"
+  }
 }
