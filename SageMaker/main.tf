@@ -57,10 +57,6 @@ resource "aws_iam_role_policy" "example_policy" {
 EOF
 }
 
-variable "filenames" {
-  type = map(string)
-}
-
 resource "aws_s3_bucket_object" "data_upload" {
   for_each = var.filenames
   bucket   = aws_s3_bucket.example_bucket.id
